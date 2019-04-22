@@ -1,9 +1,8 @@
-const readPkg = require('read-pkg');
+var json = require('read-data').json;
+var data = json.sync('data.json');
+console.log(data); //displays whole json
 
-(async () => {
-    console.log(await readPkg());
-    //=> {name: 'read-pkg', …}
- 
-    console.log(await readPkg({cwd: 'some-other-directory'}));
-    //=> {name: 'unicorn', …}
-})();
+
+for(item in data.items){
+    console.log(data.items[item].fname + " " + data.items[item].age);
+} //displays first name and age
